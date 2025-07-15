@@ -1,10 +1,15 @@
 import google.generativeai as genai
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Configure Google AI Studio API
-# You should set your API key as an environment variable
-# For now, you can replace this with your actual API key
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "YOUR_GOOGLE_AI_STUDIO_API_KEY_HERE")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+if not GOOGLE_API_KEY:
+    raise ValueError("GOOGLE_API_KEY environment variable is not set. Please add it to your .env file.")
+
 genai.configure(api_key=GOOGLE_API_KEY)
 
 def ask_gpt(prompt: str) -> str:

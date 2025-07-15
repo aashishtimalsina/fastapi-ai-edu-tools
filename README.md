@@ -1,18 +1,19 @@
-# FastAPI AI Edu Tools 🎓🤖
+# FastAPI Google AI Edu Tools 🎓🤖
 
-A FastAPI-based backend integrating OpenAI's GPT APIs to power AI-driven educational tools and services. This project is designed to be the backend foundation for EdTech platforms that require dynamic content generation, Q&A bots, and interactive AI-based features.
+A FastAPI-based backend integrating Google AI Studio's Gemini APIs to power AI-driven educational tools and services. This project is designed to be the backend foundation for EdTech platforms that require dynamic content generation, Q&A bots, and interactive AI-based features.
 
 ---
 
 ## 🚀 Features
 
-- ✨ AI-powered Q&A endpoint using OpenAI (GPT-3.5/4)
+- ✨ AI-powered Q&A endpoint using Google AI Studio (Gemini 1.5 Flash)
 - 👤 User creation and management
 - ⚙️ Modular and clean project structure
 - 📡 RESTful API with FastAPI
-- 🧠 Easily extensible to LangChain, Hugging Face, etc.
+- 🧠 Easily extensible to other AI models
 - 💾 SQLite with SQLAlchemy ORM (easy to switch DB)
 - ☁️ Ready for cloud deployment (Heroku, GCP, AWS)
+- 🔒 Secure API key management with environment variables
 
 ---
 
@@ -21,22 +22,39 @@ A FastAPI-based backend integrating OpenAI's GPT APIs to power AI-driven educati
 ```
 fastapi-ai-edu-tools/
 ├── app/
-│   ├── main.py                 # FastAPI app setup
-│   ├── models.py              # SQLAlchemy models
-│   ├── schemas.py             # Pydantic schemas
-│   ├── database.py            # DB engine and session
-│   ├── openai_integration.py  # GPT call logic
+│   ├── main.py                    # FastAPI app setup
+│   ├── models.py                  # SQLAlchemy models
+│   ├── schemas.py                 # Pydantic schemas
+│   ├── database.py                # DB engine and session
+│   ├── google_ai_integration.py   # Google AI Studio integration
 │   └── routes/
-│       ├── user.py            # /users/ route
-│       └── ai.py              # /ask-ai/ route
-├── .env                       # Environment variables
+│       ├── user.py                # /users/ route
+│       └── ai.py                  # /ask-ai/ route
+├── .env                           # Environment variables (create from .env.example)
+├── .env.example                   # Environment variables template
 ├── requirements.txt
+├── setup.sh                       # Quick setup script
 └── README.md
 ```
 
 ---
 
 ## 🔧 Setup Instructions
+
+### Quick Setup (Recommended)
+```bash
+# Clone the repository
+git clone https://github.com/your-username/fastapi-ai-edu-tools.git
+cd fastapi-ai-edu-tools
+
+# Run the setup script
+./setup.sh
+
+# Edit .env file with your Google AI Studio API key
+nano .env  # or use your preferred editor
+```
+
+### Manual Setup
 
 ### 1. Clone the repository
 ```bash
@@ -55,12 +73,19 @@ source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
-### 4. Add your OpenAI API Key
-Create a `.env` file in the root directory and add:
+### 4. Add your Google AI Studio API Key
+Create a `.env` file in the root directory (or copy from `.env.example`) and add:
 
 ```ini
-OPENAI_API_KEY=your_openai_key_here
+GOOGLE_API_KEY=your_google_ai_studio_api_key_here
 ```
+
+To get your Google AI Studio API key:
+1. Go to [Google AI Studio](https://aistudio.google.com/)
+2. Sign in with your Google account
+3. Click on "Get API key" 
+4. Create a new API key or use an existing one
+5. Copy the API key and paste it in your `.env` file
 
 ### 5. Run the FastAPI server
 ```bash
@@ -105,21 +130,22 @@ Body:
 ## 📚 Technologies Used
 
 - **FastAPI** — high-performance API framework
-- **OpenAI API** — GPT-3.5/4 integration
+- **Google AI Studio** — Gemini AI model integration
 - **SQLAlchemy** — ORM for database models
 - **Pydantic** — Data validation
 - **Uvicorn** — ASGI server
-- **dotenv** — for environment variable handling
+- **python-dotenv** — for environment variable handling
 
 ---
 
 ## 🚀 Future Enhancements
 
 - 🔐 JWT Authentication
-- 🧠 LangChain or Hugging Face integration
+- 🧠 Multiple AI model support (OpenAI, Anthropic, etc.)
 - 🧩 Vector DB support (e.g., Pinecone, Chroma)
 - 🌐 WebSocket/streaming responses
 - 📊 Analytics dashboard
+- 🎯 Fine-tuned models for educational content
 
 ---
 

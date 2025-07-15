@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from app.schemas import AIRequest
-from app.openai_integration import ask_gpt
+from app.google_ai_integration import ask_gpt
 
 router = APIRouter()
 
