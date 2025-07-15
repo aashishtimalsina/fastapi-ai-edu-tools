@@ -10,7 +10,7 @@ class User(BaseModel):
     email: str
 
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 class AIRequest(BaseModel):
     prompt: str
